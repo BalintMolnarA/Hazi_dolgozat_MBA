@@ -12,6 +12,7 @@
                         <div class="alert alert-success">
                             {{session()->get('kesz')}}
                         </div>
+                    @endif
                     @csrf
                     <h1 >Adatok:</h1>
                     <div class="my-3">

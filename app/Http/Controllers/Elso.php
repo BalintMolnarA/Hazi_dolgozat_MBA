@@ -39,7 +39,7 @@ class Elso extends Controller
 
         
         
-        DB::insert("INSERT INTO adatok (Vezeteknev, Keresztnev, Szuletesi_ev) VALUES (?,?,?)",[$req->get('vnev')],[$req->get('knev')],[$req->get('szul')]);
+        DB::insert("INSERT INTO adatok (Vezeteknev, Keresztnev, Szuletesi_ev) VALUES (?,?,?)",[$req->get('vnev'),$req->get('knev'),$req->get('szul')]);
         return redirect ("/")->with("kesz","Az adat felvitel sikeres");
    }
 
