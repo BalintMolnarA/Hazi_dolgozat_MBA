@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\XPath\Extension\FunctionExtension;
+use Illuminate\Support\Facades\DB;
 
 class Elso extends Controller
 {
@@ -18,7 +19,7 @@ class Elso extends Controller
         [
             "vnev"=>"required|min:1|max:30",
             "knev"=>"required|min:1|max:30",
-            "szul"=>"required|date|max:".(date("Y")),
+            "szul"=>"required|date"
 
         ],
 
@@ -33,12 +34,12 @@ class Elso extends Controller
 
             "szul.required" => "kötelező kitölteni a mezőt!",
             "szult.date" => "Csak dátum lehet!",
-            "szul.max" =>"A mai dátumnál nem lehet nagyobb"
-        ] 
+            
+        ]);
 
-        );
-
-
+        
+        
+        DB::insert("INSERT INTO adatok (Vezeteknev, Keresztnev, Szuletesi_ev) VALUES (?,?,?)",[$req->get('vnev')],[$req->get('knev')],[$req->get('szul')]);
 
    }
 
